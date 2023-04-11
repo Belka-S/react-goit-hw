@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Belka-S/goit-react-hw-01-components/static/css/main.7acaea2f.css",
+    "main.js": "/Belka-S/goit-react-hw-01-components/static/js/main.1c37b54a.js",
+    "index.html": "/Belka-S/goit-react-hw-01-components/index.html",
+    "main.7acaea2f.css.map": "/Belka-S/goit-react-hw-01-components/static/css/main.7acaea2f.css.map",
+    "main.1c37b54a.js.map": "/Belka-S/goit-react-hw-01-components/static/js/main.1c37b54a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.1c37b54a.js"
+  ]
+}
