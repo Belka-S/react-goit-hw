@@ -1,8 +1,7 @@
-import { GlobalStyle } from './GlobalStyles';
 import { Container } from 'components/Layout/Layout.styled';
 
 import { Profile } from '../Profile/Profile';
-import users from 'data/users.json';
+import user from 'data/users.json';
 
 import { Statistics } from 'components/Statistics/Statistics';
 import data from 'data/data.json';
@@ -15,12 +14,17 @@ import transactions from 'data/transactions.json';
 
 export const App = () => (
   <>
-    <GlobalStyle />
     <Container>
       <h1>react-hw-01-components</h1>
 
       <h2>1 - Social Network Profile</h2>
-      <Profile user={users} />
+      <Profile
+        username={user.username}
+        tag={user.tag}
+        location={user.location}
+        avatar={user.avatar}
+        stats={user.stats}
+      />
 
       <h2>2 - Statistics Section</h2>
       <Statistics title="Upload stats" stats={data} />
