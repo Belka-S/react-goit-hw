@@ -1,33 +1,84 @@
+import { Component } from 'react';
+
 import PropTypes from 'prop-types';
 import { Table, TableRow } from './Transactions.styled';
 
-export const Transactions = ({ items }) => (
-  <Table>
-    <thead>
-      <TableRow>
-        <th>Type</th>
-        <th>Amount</th>
-        <th>Currency</th>
-      </TableRow>
-    </thead>
+export class Transactions extends Component {
+  state = { id: null };
 
-    <tbody items={items}>
-      {items.map(({ id, type, amount, currency }) => (
-        <TableRow key={id}>
-          <td>{type}</td>
-          <td>{amount}</td>
-          <td>{currency}</td>
-        </TableRow>
-      ))}
-    </tbody>
-  </Table>
-);
+  onSelect = transactionId => this.setState({ id: transactionId });
 
-Transactions.propTypes = PropTypes.arrayOf(
-  PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    amount: PropTypes.string.isRequired,
-    currency: PropTypes.string.isRequired,
-  }).isRequired
-).isRequired;
+  render = () => {
+    const { items, onDelete, onSelect } = this.props;
+
+    return (
+      <Table>
+        <thead>
+          <TableRow>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Currency</th>
+            <th>Actions</th>
+          </TableRow>
+        </thead>
+
+        <tbody items={items} onSelect={this.selectTransaction}>
+          {items.map(({ id, type, amount, currency }) => (
+            <TableRow key={id}>
+              <td>{type}</td>
+              <td>{amount}</td>
+              <td>{currency}</td>
+              <td>
+                {this.state.id === id ? (
+                  <span>id: {this.state.id}</span>
+                ) : (
+                  <button onClick={() => this.onSelect(id)}>Detail</button>
+                )}
+                <button onClick={() => onDelete(id)}>Delete</button>
+              </td>
+            </TableRow>
+          ))}
+        </tbody>
+      </Table>
+    );
+  };
+}
+
+// export const Transactions = ({ items, onDelete, onSelect }) => (
+//   <Table>
+//     <thead>
+//       <TableRow>
+//         <th>Type</th>
+//         <th>Amount</th>
+//         <th>Currency</th>
+//         <th>Actions</th>
+//       </TableRow>
+//     </thead>
+
+//     <tbody items={items}>
+//       {items.map(({ id, type, amount, currency }) => (
+//         <TableRow key={id}>
+//           <td>{type}</td>
+//           <td>{amount}</td>
+//           <td>{currency}</td>
+//           <td>
+//             <button onClick={() => onDelete(id)}>Delete</button>
+//             <button onClick={() => onSelect(id)}>Detail</button>
+//           </td>
+//         </TableRow>
+//       ))}
+//     </tbody>
+//   </Table>
+// );
+
+Transactions.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  onDelete: PropTypes.func.isRequired,
+};

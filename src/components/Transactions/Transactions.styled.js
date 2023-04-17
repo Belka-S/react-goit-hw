@@ -17,7 +17,10 @@ export const TableRow = styled.tr`
   }
 
   th {
-    width: 350px;
+    min-width: 210px;
+    &:last-of-type {
+      width: 100%;
+    }
     padding: 10px;
     color: white;
     background-color: steelblue;
@@ -33,8 +36,22 @@ export const TableRow = styled.tr`
     color: gray;
     text-transform: capitalize;
 
+    &:last-of-type {
+      display: flex;
+      justify-content: space-between;
+    }
+
     &:not(:first-of-type) {
       border-left: 1px solid lightgrey;
+    }
+
+    button {
+      background-color: steelblue;
+      border-color: steelblue;
+      border-radius: 5px;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 700;
     }
   }
 `;

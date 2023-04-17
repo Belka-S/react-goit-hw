@@ -1,3 +1,4 @@
+import { Component } from 'react';
 import { Container } from 'components/Layout/Layout.styled';
 
 import { Profile } from '../Profile/Profile';
@@ -10,30 +11,81 @@ import { FriendsList } from 'components/Friends/FriendsList';
 import friends from 'data/friends.json';
 
 import { Transactions } from 'components/Transactions/Transactions';
-import transactions from 'data/transactions.json';
+import initialTransactions from 'data/transactions.json';
 
-export const App = () => (
-  <>
-    <Container>
-      <h1>react-hw-01-components</h1>
+export class App extends Component {
+  state = {
+    transactions: initialTransactions,
+    // id: null,
+  };
 
-      <h2>1 - Social Network Profile</h2>
-      <Profile
-        username={user.username}
-        tag={user.tag}
-        location={user.location}
-        avatar={user.avatar}
-        stats={user.stats}
-      />
+  deleteTransaction = transactionId =>
+    this.setState(prevState => ({
+      transactions: prevState.transactions.filter(
+        tratsaction => tratsaction.id !== transactionId
+      ),
+    }));
 
-      <h2>2 - Statistics Section</h2>
-      <Statistics title="Upload stats" stats={data} />
+  // selectTransaction = transactionId => this.setState({ id: transactionId });
 
-      <h2>3 - Friends List</h2>
-      <FriendsList items={friends} />
+  render = () => (
+    <>
+      <Container>
+        <h1>react-hw-01-components</h1>
 
-      <h2>4 - Transaction History</h2>
-      <Transactions items={transactions} />
-    </Container>
-  </>
-);
+        <h2>1 - Social Network Profile</h2>
+        <Profile
+          username={user.username}
+          tag={user.tag}
+          location={user.location}
+          avatar={user.avatar}
+          stats={user.stats}
+        />
+
+        <h2>2 - Statistics Section</h2>
+        <Statistics title="Upload stats" stats={data} />
+
+        <h2>3 - Friends List</h2>
+        <FriendsList items={friends} />
+
+        <h2>4 - Transaction History</h2>
+        {/* {this.state.id && (
+          <div>
+            <h2>{this.state.id}</h2>
+          </div>
+        )} */}
+        <Transactions
+          items={this.state.transactions}
+          onDelete={this.deleteTransaction}
+          // onSelect={this.selectTransaction}
+        />
+      </Container>
+    </>
+  );
+}
+
+// export const App = () => (
+//   <>
+//     <Container>
+//       <h1>react-hw-01-components</h1>
+
+//       <h2>1 - Social Network Profile</h2>
+//       <Profile
+//         username={user.username}
+//         tag={user.tag}
+//         location={user.location}
+//         avatar={user.avatar}
+//         stats={user.stats}
+//       />
+
+//       <h2>2 - Statistics Section</h2>
+//       <Statistics title="Upload stats" stats={data} />
+
+//       <h2>3 - Friends List</h2>
+//       <FriendsList items={friends} />
+
+//       <h2>4 - Transaction History</h2>
+//       <Transactions items={transactions} />
+//     </Container>
+//   </>
+// );
