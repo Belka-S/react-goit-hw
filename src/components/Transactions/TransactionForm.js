@@ -1,8 +1,8 @@
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
 
-import { Form, Label, ErrorMessage } from './TransactionForm.styled';
+import { Form, Field, Label, ErrorMessage } from './TransactionForm.styled';
 
 const tansactionSchema = Yup.object({
   type: Yup.string()
