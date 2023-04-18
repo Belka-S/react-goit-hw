@@ -9,7 +9,7 @@ export class Transactions extends Component {
   onSelect = transactionId => this.setState({ id: transactionId });
 
   render = () => {
-    const { items, onDelete, onSelect } = this.props;
+    const { items, onDelete } = this.props;
 
     return (
       <Table>
@@ -26,7 +26,7 @@ export class Transactions extends Component {
           {items.map(({ id, type, amount, currency }) => (
             <TableRow key={id}>
               <td>{type}</td>
-              <td>{amount}</td>
+              <td>{amount.toFixed(2)}</td>
               <td>{currency}</td>
               <td>
                 {this.state.id === id ? (
@@ -44,39 +44,12 @@ export class Transactions extends Component {
   };
 }
 
-// export const Transactions = ({ items, onDelete, onSelect }) => (
-//   <Table>
-//     <thead>
-//       <TableRow>
-//         <th>Type</th>
-//         <th>Amount</th>
-//         <th>Currency</th>
-//         <th>Actions</th>
-//       </TableRow>
-//     </thead>
-
-//     <tbody items={items}>
-//       {items.map(({ id, type, amount, currency }) => (
-//         <TableRow key={id}>
-//           <td>{type}</td>
-//           <td>{amount}</td>
-//           <td>{currency}</td>
-//           <td>
-//             <button onClick={() => onDelete(id)}>Delete</button>
-//             <button onClick={() => onSelect(id)}>Detail</button>
-//           </td>
-//         </TableRow>
-//       ))}
-//     </tbody>
-//   </Table>
-// );
-
 Transactions.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
-      amount: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
       currency: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,

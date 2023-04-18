@@ -36,6 +36,10 @@ export const TableRow = styled.tr`
     color: gray;
     text-transform: capitalize;
 
+    &:nth-of-type(3) {
+      text-transform: uppercase;
+    }
+
     &:last-of-type {
       display: flex;
       justify-content: space-between;
@@ -46,12 +50,14 @@ export const TableRow = styled.tr`
     }
 
     button {
+      padding: 1px 20px;
       background-color: steelblue;
-      border-color: steelblue;
+      border: none;
       border-radius: 5px;
       color: white;
       text-transform: uppercase;
       font-weight: 700;
+      cursor: pointer;
     }
   }
 `;
