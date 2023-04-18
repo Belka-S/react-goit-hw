@@ -22,7 +22,7 @@ export class Transactions extends Component {
           </TableRow>
         </thead>
 
-        <tbody items={items} onSelect={this.selectTransaction}>
+        <tbody items={items}>
           {items.map(({ id, type, amount, currency }) => (
             <TableRow key={id}>
               <td>{type}</td>

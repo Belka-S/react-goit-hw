@@ -24,7 +24,7 @@ export const TransactionForm = ({ onSubmit }) => (
       <Label>
         Type
         <ErrorMessage name="type" component="span" />
-        <Field as="select" name="type">
+        <Field component="select" name="type">
           <option value="invoice">invoice</option>
           <option value="payment">payment</option>
           <option value="withdrawal">withdraw</option>
