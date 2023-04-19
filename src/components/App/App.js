@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { Container } from 'components/Layout/Layout.styled';
+// import { Container } from 'components/Layout/Layout.styled';
+import { Section } from 'components/Section/Section';
 
 import { Profile } from '../Profile/Profile';
 import user from 'data/users.json';
@@ -33,30 +34,33 @@ export class App extends Component {
     }));
 
   render = () => (
-    <Container>
-      <h1>react-hw-01-components</h1>
+    <>
+      <h1 style={{ marginLeft: '60px' }}>react-hw-01-components</h1>
 
-      <h2>1 - Social Network Profile</h2>
-      <Profile
-        username={user.username}
-        tag={user.tag}
-        location={user.location}
-        avatar={user.avatar}
-        stats={user.stats}
-      />
+      <Section title={'1 - Social Network Profile'}>
+        <Profile
+          username={user.username}
+          tag={user.tag}
+          location={user.location}
+          avatar={user.avatar}
+          stats={user.stats}
+        />
+      </Section>
+      <Section title={'2 - Statistics Section'}>
+        <Statistics title="Upload stats" stats={data} />
+      </Section>
 
-      <h2>2 - Statistics Section</h2>
-      <Statistics title="Upload stats" stats={data} />
+      <Section title={'3 - Friends List'}>
+        <FriendsList items={friends} />
+      </Section>
 
-      <h2>3 - Friends List</h2>
-      <FriendsList items={friends} />
-
-      <h2>4 - Transaction History</h2>
-      <TransactionForm onSubmit={this.addTransaction} />
-      <Transactions
-        items={this.state.transactions}
-        onDelete={this.deleteTransaction}
-      />
-    </Container>
+      <Section title={'4 - Transaction History'}>
+        <TransactionForm onSubmit={this.addTransaction} />
+        <Transactions
+          items={this.state.transactions}
+          onDelete={this.deleteTransaction}
+        />
+      </Section>
+    </>
   );
 }

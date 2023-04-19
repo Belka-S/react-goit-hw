@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
   position: relative;
   padding: 10px;
   font-family: 'Montserrat', sans-serif;
@@ -20,5 +20,9 @@ export const Container = styled.div`
   @media screen and (min-width: 1280px) {
     // max-width: 1150px;
     padding: 30px 65px;
+  }
+
+  h2 {
+    margin-bottom: 15px;
   }
 `;
