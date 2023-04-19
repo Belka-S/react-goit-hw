@@ -33,32 +33,30 @@ export class App extends Component {
     }));
 
   render = () => (
-    <>
-      <Container>
-        <h1>react-hw-01-components</h1>
+    <Container>
+      <h1>react-hw-01-components</h1>
 
-        <h2>1 - Social Network Profile</h2>
-        <Profile
-          username={user.username}
-          tag={user.tag}
-          location={user.location}
-          avatar={user.avatar}
-          stats={user.stats}
-        />
+      <h2>1 - Social Network Profile</h2>
+      <Profile
+        username={user.username}
+        tag={user.tag}
+        location={user.location}
+        avatar={user.avatar}
+        stats={user.stats}
+      />
 
-        <h2>2 - Statistics Section</h2>
-        <Statistics title="Upload stats" stats={data} />
+      <h2>2 - Statistics Section</h2>
+      <Statistics title="Upload stats" stats={data} />
 
-        <h2>3 - Friends List</h2>
-        <FriendsList items={friends} />
+      <h2>3 - Friends List</h2>
+      <FriendsList items={friends} />
 
-        <h2>4 - Transaction History</h2>
-        <TransactionForm onSubmit={this.addTransaction} />
-        <Transactions
-          items={this.state.transactions}
-          onDelete={this.deleteTransaction}
-        />
-      </Container>
-    </>
+      <h2>4 - Transaction History</h2>
+      <TransactionForm onSubmit={this.addTransaction} />
+      <Transactions
+        items={this.state.transactions}
+        onDelete={this.deleteTransaction}
+      />
+    </Container>
   );
 }
