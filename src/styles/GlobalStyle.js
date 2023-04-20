@@ -1,5 +1,4 @@
 import 'modern-normalize';
-import 'typeface-montserrat';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
@@ -16,7 +15,7 @@ code {
     monospace;
 }
 body {
-  line-height: 1.5;
+   line-height: 1.5;
 }
 h1,
 h2,
