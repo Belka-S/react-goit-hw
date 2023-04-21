@@ -61,8 +61,8 @@ export class App extends Component {
         good={good}
         neutral={neutral}
         bad={bad}
-        total={this.countTotalFeedback()}
-        positivePstg={this.countPositiveFeedbackPstg()}
+        total={totalFeedback}
+        positivePstg={positivePstg}
       />
     );
 })()} */
