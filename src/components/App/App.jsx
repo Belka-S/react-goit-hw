@@ -15,30 +15,51 @@ export class App extends Component {
   addFeedback = option =>
     this.setState(prevState => ({ [option]: prevState[option] + 1 }));
 
-  countTotalFeedback = obj =>
-    Object.values(obj).reduce((acc, el) => (acc += el));
+  countTotalFeedback = () =>
+    Object.values(this.state).reduce((acc, el) => (acc += el));
 
-  countPositiveFeedbackPstg = obj => obj.good / this.countTotalFeedback(obj);
+  countPositiveFeedbackPstg = () => this.state.good / this.countTotalFeedback();
 
-  render = () => (
-    <>
-      <Section title="Please leave feedback">
-        <Options options={this.state} onLeaveFeedback={this.addFeedback} />
-      </Section>
-
-      <Section title="Statistics">
-        {this.countTotalFeedback(this.state) > 0 ? (
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={this.countTotalFeedback(this.state)}
-            positivePstg={this.countPositiveFeedbackPstg(this.state)}
+  render = () => {
+    const { good, neutral, bad } = this.state;
+    return (
+      <>
+        <Section title="Please leave feedback">
+          <Options
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.addFeedback}
           />
-        ) : (
-          <Notification message="There is no feedback" />
-        )}
-      </Section>
-    </>
-  );
+        </Section>
+
+        <Section title="Statistics">
+          {this.countTotalFeedback(this.state) > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePstg={this.countPositiveFeedbackPstg()}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
+      </>
+    );
+  };
 }
+
+/* {(() => {
+  if (this.countTotalFeedback(this.state) === 0)
+    return <Notification message="There is no feedback" />;
+  else
+    return (
+        <Statistics
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        total={this.countTotalFeedback()}
+        positivePstg={this.countPositiveFeedbackPstg()}
+      />
+    );
+})()} */
