@@ -22,7 +22,9 @@ export class App extends Component {
 
   render = () => {
     const { good, neutral, bad } = this.state;
-    const isFeedback = this.countTotalFeedback(this.state);
+    const totalFeedback = this.countTotalFeedback();
+    const positivePstg = this.countPositiveFeedbackPstg();
+
     return (
       <>
         <Section title="Please leave feedback">
@@ -33,15 +35,15 @@ export class App extends Component {
         </Section>
 
         <Section title="Statistics">
-          {!isFeedback ? (
+          {!totalFeedback ? (
             <Notification message="There is no feedback" />
           ) : (
             <Statistics
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback()}
-              positivePstg={this.countPositiveFeedbackPstg()}
+              total={totalFeedback}
+              positivePstg={positivePstg}
             />
           )}
         </Section>
@@ -51,7 +53,7 @@ export class App extends Component {
 }
 
 /* {(() => {
-  if (this.countTotalFeedback(this.state) === 0)
+  if (!totalFeedback)
     return <Notification message="There is no feedback" />;
   else
     return (
