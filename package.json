@@ -2,7 +2,7 @@
   "name": "goit-react-hw-01-components",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://belka-s.github.io/goit-react-hw-01-components/",
+  "homepage": "https://belka-s.github.io/react-goit-hw/",
   "devDependencies": {
     "prop-types": "^15.8.1"
   },
